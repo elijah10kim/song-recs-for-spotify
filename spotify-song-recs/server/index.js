@@ -4,33 +4,33 @@ const request = require('request');
 
 const port = 5000
 global.access_token = ''
-
 dotenv.config()
 
 var spotify_client_id = process.env.SPOTIFY_CLIENT_ID
 var spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET
-
-var app = express();
+var spotify_redirect_uri = 'http://localhost:3000/auth/callback'
 
 // Random string generator for state parameter
 var generateRandStr = function (length) {
     var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var randStr = '';
     for (var i = 0; i < length; i++) {
-        randStr += chars.charAt(Math.floor(Math.random() * chars.length))
+        randStr += chars.charAt(Math.floor(Math.random() * chars.length));
     }
-    return randStr
+    return randStr;
 }
+
+var app = express();
 
 app.get('/auth/login', (req, res) => {
     var scope = "streaming user-read-email user-read-private"
-    var state = generateRandomString(16);
+    var state = generateRandStr(16);
   
     var auth_query_parameters = new URLSearchParams({
       response_type: "code",
       client_id: spotify_client_id,
       scope: scope,
-      redirect_uri: 'http://localhost:3000/auth/callback',
+      redirect_uri: spotify_redirect_uri,
       state: state
     })
   
@@ -38,14 +38,13 @@ app.get('/auth/login', (req, res) => {
 });
 
 app.get('/auth/callback', (req, res) => {
-    
   var code = req.query.code;
 
   var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     form: {
       code: code,
-      redirect_uri: 'http://localhost:3000/auth/callback',
+      redirect_uri: spotify_redirect_uri,
       grant_type: 'authorization_code'
     },
     headers: {
@@ -61,12 +60,13 @@ app.get('/auth/callback', (req, res) => {
       res.redirect('/')
     }
   });
+
 });
 
 app.get('/auth/token', (req, res) => {
-    res.json({ access_token: access_token})
-  })
-  
+  res.json({ access_token: access_token})
+})
+
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })
