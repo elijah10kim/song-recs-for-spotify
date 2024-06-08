@@ -1,5 +1,5 @@
 import React from 'react';
-import CallToAction from './CallToAction';
+import Hero from './Hero';
 
 function Login() {
     return (
@@ -7,7 +7,7 @@ function Login() {
             <header className="App-header">
                 <h1>Song Recs for Spotify</h1>
             </header>
-            <CallToAction />
+            <Hero />
             <a className="btn-spotify" href="/auth/login" >
                     Login with Spotify
             </a>

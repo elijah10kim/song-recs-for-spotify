@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #000000;
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,14 +14,14 @@
 
 }
 
-.call-to-action {
-  display: flex;
+.hero {
   width: 60%;
   color: #37d461;
 }
 
-.demo {
-  
+.parameters {
+  font-style: italic;
+  font-weight: bold;
 }
 
 .btn-spotify {
