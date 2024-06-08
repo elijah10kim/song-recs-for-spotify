@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: black;
+  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,6 +8,10 @@
   justify-content: space-around;
   font-size: calc(10px + 2vmin);
   color: #37d461;
+  background: url(background.jpg);
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
 }
 
 .App-header {
@@ -16,7 +20,7 @@
 
 .hero {
   width: 60%;
-  color: #37d461;
+  color: black;
 }
 
 .parameters {
