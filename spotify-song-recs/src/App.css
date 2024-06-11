@@ -6,21 +6,47 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  font-size: calc(10px + 2vmin);
-  color: #37d461;
+  background-color: rgba(104, 207, 159, 0.719);
+  /*
   background: url(background.jpg);
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
+  */
+  
 }
 
 .App-header {
-
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  justify-content: space-around;
+  font-size: calc(4px + 1vmin);
+  color: #37d461;
 }
 
-.hero {
+.hero-container {
+  align-items: center;
   width: 60%;
   color: black;
+}
+
+#hero-txt {
+  font-size: 4vh;
+  font-weight: bold;
+}
+
+.hero-right {
+  /*  image or demo of app will go here OR examples of search params*/
+}
+
+#message {
+  
 }
 
 .parameters {
@@ -46,4 +72,10 @@
 .btn-spotify:active {
   position:relative;
   top:1px;
+}
+
+footer {
+  color: white;
+  font-size: 10px;
+  justify-self: end;
 }
